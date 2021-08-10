@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6be1d2a7cfc83dc4aa04be8db3c9abd8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _enemyPrefab: {instanceID: 0}
+  - _enemyContainer: {instanceID: 0}
+  - _TripleShotPowerUp: {fileID: 2769203517183430959, guid: 702c79b94a7650340ab550f02afcd7ca, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
