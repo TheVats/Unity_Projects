@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private bool _isGameOver;
+    public AdsManager Ads;
 
     private void Update()
     {
@@ -16,5 +17,19 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         _isGameOver = true;
+
     }
+    public void Start()
+    {
+        Ads.ShowBanner();
+    }
+    public void PLayAd()
+    {
+        if (_isGameOver == true)
+        {
+            Ads.PlayAds();
+        }
+
+    }
+
 }

@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
 
 
-        _ui = GameObject.Find("Canvas").GetComponent<UI>();
+        _ui = GameObject.Find("GameOver Canvas").GetComponent<UI>();
         _spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
         
         if(_spawnManager == null)
@@ -198,6 +198,7 @@ public class Player : MonoBehaviour
 
     public void Score ()
     {
+        
         _ui.Points();
     }
 }
