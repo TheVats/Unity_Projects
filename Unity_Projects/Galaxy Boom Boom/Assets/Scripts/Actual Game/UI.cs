@@ -18,6 +18,7 @@ public class UI : MonoBehaviour
     [SerializeField]
     private Text _restartText;
     private GameManager _gameManager;
+    public Text LOL;
 
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class UI : MonoBehaviour
         _restartText.gameObject.SetActive(false);
         _gameOverText.gameObject.SetActive(false);
         _scoreText.text = "Score: " + 0;
+        LOL.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,6 +41,10 @@ public class UI : MonoBehaviour
     {
         _scoreText.text = "Score: " + (Score += 10);
     }
+    public void AsteroidPoints()
+    {
+        _scoreText.text = "Score: " + (Score += 100);
+    }
     public void UpdateLives(int currentLives)
     {
         _livesImg.sprite = _livesSprites[currentLives];
@@ -48,18 +54,19 @@ public class UI : MonoBehaviour
             GameOverSequence();
         }
     }
-    void GameOverSequence()
+    public void GameOverSequence()
     {
         _gameManager.GameOver();
         _restartText.gameObject.SetActive(true);
         _gameOverText.gameObject.SetActive(true);
+        LOL.gameObject.SetActive(true);
         StartCoroutine(GameOverFlickerRoutine());
     }
     IEnumerator GameOverFlickerRoutine()
     {
         while(true)
         {
-            _gameOverText.text = "YOU DED :)";
+            _gameOverText.text = "YOU DIED :)";
             yield return new WaitForSeconds(0.2f);
             _gameOverText.text = "";
             yield return new WaitForSeconds(0.2f);

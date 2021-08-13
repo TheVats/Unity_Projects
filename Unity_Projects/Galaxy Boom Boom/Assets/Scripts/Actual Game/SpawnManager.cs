@@ -12,7 +12,8 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField]
     private GameObject[] powerups;
-
+    [SerializeField]
+    private GameObject Asteroids;
 
 
     private bool _stopSpawning = false;
@@ -22,6 +23,7 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(SpawnEnemyRoutine());
         StartCoroutine(SpawnTripleShotRoutine());
+        StartCoroutine(AsteroidSpawnRoutine());
         
     }
 
@@ -29,6 +31,15 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         
+    }
+    IEnumerator AsteroidSpawnRoutine()
+    {
+        while(_stopSpawning == false)
+        {
+            Vector2 posToSpawn = new Vector2(Random.Range(-8f, 8f), 7);
+            Instantiate(Asteroids, posToSpawn, Quaternion.identity);
+            yield return new WaitForSeconds(Random.Range(5f, 12f));
+        }
     }
 
     IEnumerator SpawnEnemyRoutine()
