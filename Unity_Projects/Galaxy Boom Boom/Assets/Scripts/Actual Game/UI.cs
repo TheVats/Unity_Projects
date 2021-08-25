@@ -8,7 +8,9 @@ public class UI : MonoBehaviour
 {
     [SerializeField]
     private Text _scoreText;
-    private int Score;
+    public Text BestScoreText;
+    private int BestScore;
+    public int Score;
     [SerializeField]
     private Image _livesImg;
     [SerializeField]
@@ -24,8 +26,9 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BestScore = PlayerPrefs.GetInt("Best");
         _gameManager = GameObject.Find("Game_Manager").GetComponent<GameManager>();
-
+        BestScoreText.text = "Best Score: " + BestScore;
         _restartText.gameObject.SetActive(false);
         _gameOverText.gameObject.SetActive(false);
         _scoreText.text = "Score: " + 0;
@@ -35,15 +38,26 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
+        
     }
     public void Points()
     {
         _scoreText.text = "Score: " + (Score += 10);
     }
+
     public void AsteroidPoints()
     {
         _scoreText.text = "Score: " + (Score += 100);
+    }
+    public void BestScorePoints()
+    {
+        if (Score > BestScore)
+        {
+            BestScore = Score;
+            PlayerPrefs.SetInt("Best", BestScore);
+            BestScoreText.text = "Best Score: " + BestScore;
+        }
+       
     }
     public void UpdateLives(int currentLives)
     {
@@ -56,6 +70,7 @@ public class UI : MonoBehaviour
     }
     public void GameOverSequence()
     {
+        BestScorePoints();
         _gameManager.GameOver();
         _restartText.gameObject.SetActive(true);
         _gameOverText.gameObject.SetActive(true);

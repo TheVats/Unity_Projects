@@ -44,10 +44,11 @@ public class Laser : MonoBehaviour
             Destroy(gameObject);
          
             anim.SetTrigger("OnEnemyDeath");
+            anim.SetBool("OnDED", true);
 
             collider.gameObject.SetActive(false);
 
-            Destroy(other.gameObject, 5f);
+            Destroy(other.gameObject, 7f);
         }
     }
 }

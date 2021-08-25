@@ -49,7 +49,7 @@ public class EnemyTest : MonoBehaviour
             
             _anim.SetTrigger("OnEnemyDeath");
             _collider.gameObject.SetActive(false);
-            Destroy(this.gameObject, 2.3f);
+            Destroy(this.gameObject, 7.0f);
         }
       
     }

@@ -139,6 +139,7 @@ public class Player : MonoBehaviour
             if (_lives < 1)
             {
                 
+                    
                 _spawnManager.OnPlayerDeath();
                 Destroy(this.gameObject);
             }
@@ -152,7 +153,7 @@ public class Player : MonoBehaviour
 
         if (_TripleShotActive == true)
         {
-            Instantiate(_TripleShotPrefab, transform.position, Quaternion.identity);
+            Instantiate(_TripleShotPrefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
         }
         
         else
